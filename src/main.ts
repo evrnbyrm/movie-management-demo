@@ -15,7 +15,7 @@ async function bootstrap() {
   )
   app.useGlobalInterceptors(new ResponseInterceptor())
   app.useGlobalFilters(new CustomExceptionFilter())
-  const config = new DocumentBuilder().setTitle('Movie Management API').setDescription('API documentation for the Movie Management System').setVersion('1.0').addBearerAuth().build()
+  const config = new DocumentBuilder().setTitle('Movie Management API').setDescription('API documentation for the Movie Management Demo').setVersion('1.0').addBearerAuth().build()
 
   const document = SwaggerModule.createDocument(app, config)
 
