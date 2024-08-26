@@ -7,19 +7,21 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
   constructor(private configService: ConfigService) {}
 
   createTypeOrmOptions(): TypeOrmModuleOptions {
-    console.log(`${process.env.STAGE} db connection starting...`)
+    if (process.env.STAGE === 'prod') {
+      console.log(`${process.env.STAGE} db connection starting...`)
+    }
     switch (process.env.STAGE) {
       case 'dev':
         return {
           type: 'sqlite',
-          synchronize: false,
+          synchronize: true,
           database: this.configService.get<string>('DB_NAME'),
           autoLoadEntities: true,
         }
       case 'test':
         return {
           type: 'sqlite',
-          synchronize: false,
+          synchronize: true,
           database: this.configService.get<string>('DB_NAME'),
           autoLoadEntities: true,
           migrationsRun: true,
