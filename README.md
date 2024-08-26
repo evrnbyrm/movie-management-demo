@@ -29,6 +29,10 @@ Movies Management Demo Repository
   - **Authentication**: Managed via JWT.
   - **Authorization**: Role-based access control is implemented.
 
+- **NestJS Framework Features**
+  - Utilizes NestJS's controller/module/service structure with dependency injection.
+  - Implements **Guards** for authorization, **Interceptors** for response filtering, and **Filters** for structured error handling.
+
 - **Automatic Deployment**: Enabled via GitHub workflows.
 
 ## Installation
