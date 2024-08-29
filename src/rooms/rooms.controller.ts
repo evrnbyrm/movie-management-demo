@@ -8,6 +8,7 @@ import { RoomDto } from './dto/room.dto'
 import { Roles } from '../auth/roles.decorator'
 import { RolesGuard } from '../auth/roles.guard'
 import { UserRole } from '../utils/common.enums'
+import { UpdateRoomDto } from './dto/update-room.dto'
 
 @ApiTags('rooms')
 @ApiBearerAuth()
@@ -59,7 +60,7 @@ export class RoomsController {
   })
   @ApiResponse({ status: 200, description: 'The room has been successfully updated.', type: RoomDto })
   @ApiResponse({ status: 404, description: 'Room not found' })
-  update(@Param('id') id: string, @Body() updateRoomDto: Partial<CreateRoomDto>) {
+  update(@Param('id') id: string, @Body() updateRoomDto: UpdateRoomDto) {
     return this.roomsService.updateRoom(id, updateRoomDto)
   }
 
