@@ -12,6 +12,7 @@ import { Roles } from '../auth/roles.decorator'
 import { RolesGuard } from '../auth/roles.guard'
 import { UserRole } from '../utils/common.enums'
 import { BulkRemoveMoviesDto } from './dto/bulk-remove-movie.dto'
+import { UpdateMovieDto } from './dto/update-movie.dto'
 
 @ApiTags('movies')
 @Controller('movies')
@@ -75,7 +76,7 @@ export class MoviesController {
   @ApiParam({ name: 'id', description: 'The ID of the movie to be updated', type: String })
   @ApiResponse({ status: 200, description: 'Movie has been successfully updated.', type: MovieDto })
   @ApiResponse({ status: 404, description: 'Movie not found' })
-  update(@Param('id') id: string, @Body() updateMovieDto: Partial<CreateMovieDto>): Promise<MovieDto> {
+  update(@Param('id') id: string, @Body() updateMovieDto: UpdateMovieDto): Promise<MovieDto> {
     return this.moviesService.updateMovie(id, updateMovieDto)
   }
 

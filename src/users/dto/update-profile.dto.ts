@@ -1,10 +1,11 @@
 import { ApiPropertyOptional } from '@nestjs/swagger'
-import { IsInt, IsOptional, IsString, Max, Min } from 'class-validator'
+import { IsInt, IsNotEmpty, IsOptional, IsString, Max, Min } from 'class-validator'
 
 export class UpdateProfileDto {
-  @ApiPropertyOptional({ description: 'New username of the user', example: 'john_doe_updated' })
+  @ApiPropertyOptional({ description: 'New username of the user, cannot be empty', example: 'john_doe_updated' })
   @IsOptional()
   @IsString()
+  @IsNotEmpty()
   username?: string
 
   @ApiPropertyOptional({ description: 'New age of the user', example: 31 })

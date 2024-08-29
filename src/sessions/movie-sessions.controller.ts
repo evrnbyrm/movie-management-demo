@@ -9,6 +9,7 @@ import { MovieSessionDto } from './dto/movie-session.dto'
 import { Roles } from '../auth/roles.decorator'
 import { RolesGuard } from '../auth/roles.guard'
 import { UserRole } from '../utils/common.enums'
+import { UpdateMovieSession } from './dto/update-movie-session.dto'
 
 @ApiTags('sessions')
 @Controller('sessions')
@@ -52,7 +53,7 @@ export class MovieSessionsController {
   @ApiParam({ name: 'id', description: 'The ID of the movie session to be updated', type: String })
   @ApiResponse({ status: 200, description: 'Movie session has been successfully updated.', type: MovieSessionDto })
   @ApiResponse({ status: 404, description: 'Movie session not found' })
-  update(@Param('id') id: string, @Body() updateMovieSessionDto: Partial<CreateMovieSessionDto>): Promise<MovieSessionDto> {
+  update(@Param('id') id: string, @Body() updateMovieSessionDto: UpdateMovieSession): Promise<MovieSessionDto> {
     return this.movieSessionsService.updateMovieSession(id, updateMovieSessionDto)
   }
 

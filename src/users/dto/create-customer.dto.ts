@@ -1,13 +1,15 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { IsInt, IsString, Max, Min } from 'class-validator'
+import { IsInt, IsNotEmpty, IsString, Max, Min, MinLength } from 'class-validator'
 
 export class CreateCustomerDto {
-  @ApiProperty({ description: 'Username of the user', example: 'john_doe' })
+  @ApiProperty({ description: 'Username of the user, cannot be empty', example: 'john_doe' })
   @IsString()
+  @IsNotEmpty()
   username: string
 
-  @ApiProperty({ description: 'Password of the user', example: 'password' })
+  @ApiProperty({ description: 'Password of the user, minimum 7 characters', example: 'password' })
   @IsString()
+  @MinLength(7)
   password: string
 
   @ApiProperty({ description: 'Age of the user', example: 30 })
